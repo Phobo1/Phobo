@@ -1,0 +1,62 @@
+--Script By Phobo
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window= OrionLib:MakeWindow({Name = "KeyConect", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+OrionLib:MakeNotification({
+    Name = "Login!",
+    Content = "You to Login The Script.",
+    Image = "rbxassetid://4483345998",
+    Time = 5
+})
+
+_G.Key = "suckphobo"
+_G.KeyInput = "string"
+
+function MakeScriptHub()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Phobo1/Phobo/main/dm"))()
+end
+
+function InCorrectKeyNotification()
+    OrionLib:MakeNotification({
+        Name = "InCorectKey",
+        Content = "Cant Connect The Script",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+
+function CorectKeyNotification()
+    OrionLib:MakeNotification({
+        Name = "CorectKey",
+        Content = "Enter The Script",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+
+local Tab = Window:MakeTab({
+    Name = "Main",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+Tab:AddTextbox({
+    Name = "Enter Key",
+    Default = "",
+    TextDisappear = true,
+    Callback = function(Value)
+        _G.KeyInput = Value
+    end      
+})
+
+Tab:AddButton({
+    Name = "Check Key",
+    Callback = function()
+        if _G.KeyInput == _G.Key then
+            MakeScriptHub()
+            CorectKeyNotification()
+        else
+            InCorrectKeyNotification()
+        end
+    end
+})
